@@ -1,0 +1,124 @@
+// Include any default variable overrides here (though functions won't be available)
+
+// @import "../node_modules/bootstrap/scss/bootstrap";
+// 引入 bootstrap 必須引入的 variables、functions、 mixins
+// 我們同時可以運用裡面的 function、mixins 來精簡我們的 scss 內容，color, svg, media-breakpoint-up 等
+// function 一定要在 variables 前面，因為 variables 裡面有用到 function 的方法。
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Sans:wght@300;400;500&display=swap');
+:root {
+  --pretso-header-height: 4.375rem;
+  --pretso-navbar-weight: 15.313rem; //有誤差 加大為250px 待討論
+}
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "variables";
+@import "../node_modules/bootstrap/scss/maps";
+@import "mixins";
+@import "../node_modules/bootstrap/scss/utilities";
+//root 建議載入，會定義原生的 css 變數在瀏覽器的全域環境。
+@import "../node_modules/bootstrap/scss/root";
+// 4. Include any optional Bootstrap CSS as needed
+@import "reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/tables";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "modal";
+@import "nav";
+@import "buttons";
+@import "close";
+@import "spinners";
+
+@import "../node_modules/bootstrap/scss/helpers";
+
+// 5. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+// 6. Add additional custom code here
+.title1 {
+  font-size: $font-size-base * 0.875;
+  font-weight: 700;
+}
+.title2 {
+  font-size: $font-size-base * 0.875;
+  font-weight: 500;
+}
+.body {
+  font-size: $font-size-base * 0.75;
+  font-weight: 700;
+}
+.text1 {
+  font-size: $font-size-base * 0.625;
+  font-weight: 700;
+}
+.text2 {
+  font-size: $font-size-base * 0.625;
+  font-weight: 500;
+}
+
+//Pretso-Nav-menu
+#Left-Nav {
+  width: var(--pretso-navbar-weight);
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: var(--pretso-header-height) 0 0 0;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 20px rgba(92, 113, 154, 0.07);
+  z-index: 9;
+  overflow: hidden;
+}
+.nav-list {
+  width: 100%;
+  height: 64px;
+  padding: 0 0 0 2.938rem;
+  // flex
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  .nav_link {
+    width: 100px;
+    color: var(--bs-light-grey);
+  }
+  .icon-color {
+    fill: var(--bs-light-grey);
+  }
+
+  &:hover {
+    .nav_link {
+      color: var(--bs-pretso-blue);
+      transition: color 0.3s ease-in-out;
+    }
+    .icon-color {
+      fill: var(--bs-pretso-blue);
+      transition: fill 0.3s ease-in-out;
+    }
+  }
+  &:active {
+    .nav_link {
+      opacity: .7;
+      color: var(--bs-pretso-blue);
+    }
+    .icon-color {
+      opacity: .7;
+      fill: var(--bs-pretso-blue);
+    }
+  }
+}
+.nav-list-click {
+  .nav_link {
+    color: var(--bs-pretso-blue);
+    transition: color 0.2s ease-in-out;
+  }
+  .icon-color {
+    fill: var(--bs-pretso-blue);
+    transition: fill 0.2s ease-in-out;
+  }
+}
